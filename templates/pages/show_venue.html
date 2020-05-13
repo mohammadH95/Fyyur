@@ -74,6 +74,34 @@
 		{% endfor %}
 	</div>
 </section>
-
+<section>
+	<input type="submit" value="Delete Venue" class="btn btn-primary btn-lg btn-block">
+	<button id="del" class="btn btn-primary btn-lg btn-block" data-id="{{ venue.id }}">Delete</button>
+</section>
+<script>
+	const deleteBtns = document.querySelectorAll('.delete-button');
+	document.getElementById('del').onclick = function (e) {
+		console.log(e);
+		const venueId = e.target.dataset['id'];
+		console.log(venueId);
+		fetch('/venues/' + venueId, {
+			method: 'DELETE'
+		})
+	}
+	// for (let i = 0; i < deleteBtns.length; i++) {
+	// 	console.log("jnjdskbk");
+		
+	// 	const btn = deleteBtns[i];
+	// 	btn.onclick = function(e) {
+	// 		console.log('delete', e);
+	// 		const venueId = e.target.dataset['id'];
+	// 		fetch('/venues/' + venueId, {
+	// 			method: 'DELETE'
+	// 		});
+	// 	}
+	// }
+</script>
 {% endblock %}
+
+
 

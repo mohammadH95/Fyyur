@@ -13,7 +13,7 @@ class ShowForm(Form):
     start_time = DateTimeField(
         'start_time',
         validators=[DataRequired()],
-        default= datetime.today()
+        default=datetime.today()
     )
 
 class VenueForm(Form):
@@ -116,6 +116,19 @@ class VenueForm(Form):
     facebook_link = StringField(
         'facebook_link', validators=[URL()]
     )
+    website = StringField(
+        'website', validators=[URL()]
+    )
+    seeking_talent = SelectField(
+        'seeking_talent',
+        choices=[
+            ('No', 'No'),
+            ('Yes', 'Yes'),
+        ]
+    )
+    seeking_description = StringField(
+        'seeking_description'
+    )
 
 class ArtistForm(Form):
     name = StringField(
@@ -215,6 +228,19 @@ class ArtistForm(Form):
     facebook_link = StringField(
         # TODO implement enum restriction
         'facebook_link', validators=[URL()]
+    )
+    website = StringField(
+        'website', validators=[URL()]
+    )
+    seeking_talent = SelectField(
+        'seeking_talent',
+        choices=[
+            ('No', 'No'),
+            ('Yes', 'Yes'),
+        ]
+    )
+    seeking_description = StringField(
+        'seeking_description'
     )
 
 # TODO IMPLEMENT NEW ARTIST FORM AND NEW SHOW FORM

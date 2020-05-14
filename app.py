@@ -538,21 +538,20 @@ def shows():
     #       num_shows should be aggregated based on number of upcoming shows per venue.
 
     allData = db.session.query(Shows).all()
-    print(allData)
     data = []
 
     for s in allData:
         venueD = Venue.query.get(s.venue_id)
         artistD = Artist.query.get(s.artist_id)
 
-    data.append({
-        'venue_id': s.venue_id,
-        'venue_name': venueD.name,
-        'artist_id': s.artist_id,
-        'artist_name': artistD.name,
-        'artist_image_link': artistD.image_link,
-        'start_time': s.dateshow.strftime("%Y-%m-%d %H:%M:%S")
-    })
+        data.append({
+            'venue_id': s.venue_id,
+            'venue_name': venueD.name,
+            'artist_id': s.artist_id,
+            'artist_name': artistD.name,
+            'artist_image_link': artistD.image_link,
+            'start_time': s.dateshow.strftime("%Y-%m-%d %H:%M:%S")
+        })
 
     return render_template('pages/shows.html', shows=data)
 
